@@ -1,0 +1,99 @@
+a.lSNext, a.lSPrev, a.w-btn-circle, button.w-btn-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 100%;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: transparent;
+  outline: none;
+  outline-color: transparent;
+}
+
+.modal__button--close.w-btn-circle {
+  transform: none;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 2002;
+}
+
+a.lSNext:before, a.lSPrev:before, a.w-btn-circle:before, button.w-btn-circle:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: auto;
+  width: auto;
+  pointer-events: none;
+}
+
+a.lSNext--close:before, a.lSPrev--close:before, a.w-btn-circle--close:before, button.w-btn-circle--close:before {
+  content: "";
+  font-family: icomoon;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 400;
+}
+
+@media (max-width: 719.98px) {
+  .modal__button--close.w-btn-circle:before {
+    color: #003d4c;
+  }
+}
+
+a.lSNext .btn-circle-container, a.lSPrev .btn-circle-container, a.w-btn-circle .btn-circle-container, button.w-btn-circle .btn-circle-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+a.lSNext .btn-circle, a.lSPrev .btn-circle, a.w-btn-circle .btn-circle, button.w-btn-circle .btn-circle {
+  stroke: #c0c9dd;
+}
+
+a.lSNext--close .btn-circle, a.lSPrev--close .btn-circle, a.w-btn-circle--close .btn-circle, button.w-btn-circle--close .btn-circle {
+  stroke: hsla(0,0%,100%,.25);
+}
+
+@media (max-width: 719.98px) {
+  .modal__button--close.w-btn-circle .btn-circle {
+    stroke: rgba(0,61,76,.25);
+  }
+}
+
+a.lSNext .btn-circle-prog, a.lSPrev .btn-circle-prog, a.w-btn-circle .btn-circle-prog, button.w-btn-circle .btn-circle-prog {
+  stroke-dasharray: 175.929;
+  stroke-dashoffset: 175.929;
+  transition: all .5s ease-out;
+}
+
+a.lSNext .btn-circle-prog, a.lSPrev .btn-circle-prog, a.w-btn-circle .btn-circle-prog, button.w-btn-circle .btn-circle-prog {
+  stroke: #0155b8;
+}
+
+a.lSNext--close .btn-circle-prog, a.lSPrev--close .btn-circle-prog, a.w-btn-circle--close .btn-circle-prog, button.w-btn-circle--close .btn-circle-prog {
+  stroke: #fff;
+}
+
+@media (max-width: 719.98px) {
+  .modal__button--close.w-btn-circle .btn-circle-prog {
+    stroke: #003d4c;
+  }
+}
+
+@media (min-width: 960px) {
+  a.lSNext:hover .btn-circle-prog, a.lSPrev:hover .btn-circle-prog, a.w-btn-circle:hover .btn-circle-prog, button.w-btn-circle:hover .btn-circle-prog {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+

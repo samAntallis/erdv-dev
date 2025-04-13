@@ -1,0 +1,37 @@
+.modal [class^=w-modal] {
+  display: block!important;
+}
+
+.w-modal-forms-contact .content {
+  align-items: flex-start;
+}
+
+@media (min-width: 720px) {
+  .h3, .page--home .w-bloc--text-two-col .content .title, .wysiwyg .h3, .wysiwyg h3 {
+    font-size: 1.625rem;
+    line-height: 2.25rem;
+  }
+}
+
+.w-txt .title {
+  margin-bottom: .75rem;
+}
+
+.w-txt .wysiwyg+.btn, .w-txt .wysiwyg+.w-btn, .w-txt p+.btn, .w-txt p+.w-btn {
+  margin-top: 1.25rem;
+}
+
+.w-modal-forms-contact .content, .w-modal-forms-contact .content .w-btn {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 719.98px) {
+  .w-modal-forms-contact .content .w-btn .btn {
+    font-size: .875rem;
+  }
+}
+
+.w-modal-forms-contact .content .w-btn .btn+.btn {
+  margin-top: .9375rem;
+}

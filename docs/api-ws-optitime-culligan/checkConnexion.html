@@ -1,0 +1,411 @@
+
+    <html>
+      <head>
+        <title>
+          CommandcheckConnexion
+        </title>
+      </head>
+      <body>
+        
+  <a href="list.html">Back to index</a>&nbsp;-&nbsp;
+  <a href="indexenums.html">Enums</a>&nbsp;-&nbsp;
+  <a href="othersInformations.html">Others informations</a>
+  <hr/>
+
+        
+        <h1>
+          Command
+          checkConnexion
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( <a href="checkConnexionResponse.html">checkConnexionResponse</a> )
+                    
+        </h1>
+
+		    
+		    
+          <table summary="" border="1" cellpadding="3" cellspacing="0" width="100%">
+          <tbody><tr class="TableHeadingColor" bgcolor="#ccccff">
+          <th colspan="1" align="left"><font size="+2">
+          <b>Description</b></font></th>
+          </tr>
+          </tbody>
+          </table>
+			    <blockquote>
+      2 modes.<br> 1 : ffaSession est pass&ecute; en param&egrave;tre. on check la sessin et on va recherche l'id du job 
+      <br><br> 2 :  login / password  passé en paramètre . se connecte au connecteur et teste l'existence de la DS et du client selon le login / password saisi par l'internaute. si la DS n'est pas active la connexion est refusée. 
+      <br><br> Dans les 2 ac, on vérifie que le lien est encore actif'
+    </blockquote>
+        
+        <p>
+        
+          <table summary="" border="1" cellpadding="3" cellspacing="0" width="100%">
+          <tbody><tr class="TableHeadingColor" bgcolor="#ccccff">
+          <th colspan="1" align="left"><font size="+2">
+          <b>See also</b></font></th>
+          </tr>
+          </tbody>
+          </table>
+          <br>
+                                 
+          
+            <a href="checkConnexionResponse.html">checkConnexionResponse</a> 
+            &nbsp;
+          
+                <a href="updateInfoCustomer.html"/>updateInfoCustomer<a>
+                &nbsp;    
+                
+           
+        </p>
+            
+
+                        
+        <table summary="" border="1" cellpadding="3" cellspacing="0" width="100%">
+        <tbody><tr class="TableHeadingColor" bgcolor="#ccccff">
+        <th colspan="1" align="left"><font size="+2">
+        <b>XML representation</b></font></th>
+        </tr>
+        </tbody>
+        </table>
+        <br>
+        
+        
+    <table border="0" cellspacing="0" cellpadding="0">
+
+      <tr weight=1>
+        <td width=20></td>
+        <td width=20></td>
+        <td width=400></td>
+        <td width=100></td>
+        <td width=100></td>
+        <td width=100></td>
+      </tr>
+
+      
+
+        <tr>
+        <td colspan=3>
+          
+          &lt;<b>checkConnexion </b>
+        </td>
+        <td align="center"><I>default</I></td>
+        <td align="center"><I>mandatory</I></td>
+        <td align="center"><I>reference</I></td>
+        </tr>
+
+                
+
+      <tr>
+          <td>&nbsp;</td>
+
+          <td colspan=2>
+            
+            <a href="#id"><b>id</b></a> 
+            
+            ="int"
+          </td>
+
+          <td align="center">
+            
+              <I>"0"</I>
+            
+          </td>
+
+          <td align="center">
+            
+          </td>
+
+          <td align="center">
+            
+          </td>
+        </tr>
+            
+
+      <tr>
+          <td>&nbsp;</td>
+
+          <td colspan=2>
+            
+            <a href="#ffaSession"><b>ffaSession</b></a> 
+            
+            ="string"
+          </td>
+
+          <td align="center">
+            
+          </td>
+
+          <td align="center">
+            
+          </td>
+
+          <td align="center">
+            
+          </td>
+        </tr>
+            
+
+      <tr>
+          <td>&nbsp;</td>
+
+          <td colspan=2>
+            
+            <a href="#login"><b>login</b></a> 
+            
+            ="string"
+          </td>
+
+          <td align="center">
+            
+          </td>
+
+          <td align="center">
+            
+              <I>yes</I>
+            
+          </td>
+
+          <td align="center">
+            
+          </td>
+        </tr>
+            
+
+      <tr>
+          <td>&nbsp;</td>
+
+          <td colspan=2>
+            
+            <a href="#password"><b>password</b></a> 
+            
+            ="string"
+          </td>
+
+          <td align="center">
+            
+          </td>
+
+          <td align="center">
+            
+              <I>yes</I>
+            
+          </td>
+
+          <td align="center">
+            
+          </td>
+        </tr>
+    
+
+        <tr>
+          <td colspan=3>
+            &gt;
+          </td>
+        </tr>
+
+      
+
+    </table>
+
+    &lt;/<b>checkConnexion</b>&gt;<br/>
+
+        <br>
+
+        
+
+  <a name="field_summary"></a>
+  <table summary="" border="1" cellpadding="3" cellspacing="0" width="100%">
+  <tbody><tr class="TableHeadingColor" bgcolor="#ccccff">
+  
+  <th colspan="2" align="left"><font size="+2">
+  <b>Field Summary</b></font></th>
+  </tr>
+  
+  
+
+    <tr class="TableRowColor" bgcolor="white">
+
+    
+    <td align="right" valign="top" width="30%">
+      <font size="-1">
+      <code>
+      
+        
+          <b>  
+            int
+          </b>             
+          <br><br>
+          &nbsp;&nbsp;default : "0"<br>
+        
+      </code>
+      </font>
+    </td>
+    
+    
+    <td>
+    
+      <code>
+        <b>
+          <a name="id">        
+            id
+          </a>          
+        </b>
+        <BR><BR>
+        
+        The id of the request. Must be unique within the batch.
+      
+
+            
+      </code>
+      <br>
+    </td>
+
+  
+    </tr>
+    
+  
+
+    <tr class="TableRowColor" bgcolor="white">
+
+    
+    <td align="right" valign="top" width="30%">
+      <font size="-1">
+      <code>
+      
+        
+          <b>  
+            string
+          </b>             
+          <br><br>
+          
+        
+      </code>
+      </font>
+    </td>
+    
+    
+    <td>
+    
+      <code>
+        <b>
+          <a name="ffaSession">        
+            ffaSession
+          </a>          
+        </b>
+        <BR><BR>
+        
+         session qui a été attribuée à l'internaute. si renseignée, login/password n'est pas utile'
+      
+
+            
+      </code>
+      <br>
+    </td>
+
+  
+    </tr>
+    
+  
+
+    <tr class="TableRowColor" bgcolor="white">
+
+    
+    <td align="right" valign="top" width="30%">
+      <font size="-1">
+      <code>
+      
+        
+          <b>  
+            string
+          </b>             
+          <br><br>
+          &nbsp;&nbsp;mandatory<br>
+        
+      </code>
+      </font>
+    </td>
+    
+    
+    <td>
+    
+      <code>
+        <b>
+          <a name="login">        
+            login
+          </a>          
+        </b>
+        <BR><BR>
+        
+        correspond au userID de DS. obligatoire si ffaSession non renseigné 
+      
+
+            
+      </code>
+      <br>
+    </td>
+
+  
+    </tr>
+    
+  
+
+    <tr class="TableRowColor" bgcolor="white">
+
+    
+    <td align="right" valign="top" width="30%">
+      <font size="-1">
+      <code>
+      
+        
+          <b>  
+            string
+          </b>             
+          <br><br>
+          &nbsp;&nbsp;mandatory<br>
+        
+      </code>
+      </font>
+    </td>
+    
+    
+    <td>
+    
+      <code>
+        <b>
+          <a name="password">        
+            password
+          </a>          
+        </b>
+        <BR><BR>
+        
+        correspond au userID du customer .obligatoire si ffaSession non renseigné
+      
+
+            
+      </code>
+      <br>
+    </td>
+
+  
+    </tr>
+    
+  	
+  
+  </tbody></table>
+  
+
+    
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>        
+        
+      </body>       
+    </html>       
+  
