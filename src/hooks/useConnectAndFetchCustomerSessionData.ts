@@ -7,7 +7,8 @@ import {
 import isEmpty from 'lodash.isempty';
 
 import { connectAndFetchCustomerDataInternal } from '../utils/connectAndFetchCustomerSessionDataInternal';
-import { mockCustomerSessionData } from "../mock/mockCustomerSession";
+import { mockCustomerSessionData } from '../mock/mockCustomerSession';
+
 // import { LoginLocationState, AutoLoginUrlParams, CustomerSessionData, ErrorResult } from '../types';
 
 interface CustomerSlot {
@@ -52,65 +53,6 @@ interface CustomerSessionData {
   confirmedCustomerSlot?: CustomerSlot;
 };
 
-// 🎯 Mise à jour du mock pour simuler plusieurs choix de créneaux
-mockCustomerSessionData.defaultCustomerSlot = {
-  period: {
-    start: "2025-04-10T09:00:00",
-    end: "2025-04-10T11:00:00"
-  },
-  label: "Jeudi 10 Avril entre 9h et 11h"
-};
-
-(mockCustomerSessionData as CustomerSessionData).customerSlots = [
-  mockCustomerSessionData.defaultCustomerSlot,
-  {
-    period: {
-      start: "2025-04-10T13:00:00",
-      end: "2025-04-10T15:00:00"
-    },
-    label: "Jeudi 10 Avril entre 13h et 15h"
-  },
-  {
-    period: {
-      start: "2025-04-11T10:00:00",
-      end: "2025-04-11T12:00:00"
-    },
-    label: "Vendredi 11 Avril entre 10h et 12h"
-  },
-  {
-    period: {
-      start: "2025-04-11T14:00:00",
-      end: "2025-04-11T16:00:00"
-    },
-    label: "Vendredi 11 Avril entre 14h et 16h"
-  }
-];
-
-// 🧪 Créneaux supplémentaires simulés quand on clique sur "autres dates"
-export const mockRemainingSlots: CustomerSlot[] = [
-  {
-    period: {
-      start: "2025-04-14T09:00:00",
-      end: "2025-04-14T11:00:00"
-    },
-    label: "Lundi 14 Avril entre 9h et 11h"
-  },
-  {
-    period: {
-      start: "2025-04-14T13:00:00",
-      end: "2025-04-14T15:00:00"
-    },
-    label: "Lundi 14 Avril entre 13h et 15h"
-  },
-  {
-    period: {
-      start: "2025-04-15T10:00:00",
-      end: "2025-04-15T12:00:00"
-    },
-    label: "Mardi 15 Avril entre 10h et 12h"
-  }
-];
-
 export const useConnectAndFetchCustomerSessionData = (): CustomerSessionData | ErrorResult => {
   // when coming from /login/ path
   const locationState = useLocation<LoginLocationState>().state;
@@ -130,19 +72,20 @@ export const useConnectAndFetchCustomerSessionData = (): CustomerSessionData | E
 
   useEffectOnce(() => {
     (async function connectAndFetchCustomerSessionData() {
-
       const useMock = process.env.REACT_APP_USE_MOCK === 'true';
 
       if (useMock) {
-        console.log("✅ Utilisation du mock de session");
+        console.log("✅ Mode mock activé - données de session injectées");
         setCustomerSessionData(mockCustomerSessionData);
         return;
       }
+
       if (!isEmpty(urlParams)) {
         setCustomerSessionData(await connectAndFetchCustomerDataInternal(urlParams));
         return;
       }
-      else if (!isEmpty(locationState)) {
+
+      if (!isEmpty(locationState)) {
         setCustomerSessionData(await connectAndFetchCustomerDataInternal(locationState));
         return;
       }
@@ -150,6 +93,7 @@ export const useConnectAndFetchCustomerSessionData = (): CustomerSessionData | E
       setCustomerSessionData({ errorMessage: 'Could not fetch Customer session data' });
     })();
   });
+
 
   return customerSessionData;
 };

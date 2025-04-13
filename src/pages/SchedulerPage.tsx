@@ -21,8 +21,9 @@ import { useConfirmation } from '../hooks/useConfirmation';
 import { useContentTitle } from "../hooks/useContentTitle";
 
 import { fetchCustomerSession } from "../Scheduler/CustomerSession/index";
-import { mockRemainingSlots } from '../hooks/mockCustomerSession';
-import { mockCustomerSessionData } from '../mock/mockCustomerSession';
+
+import { mockRemainingSlots } from "../mock/mockCustomerSession";
+
 
 // import { sendEmail } from "../components/SendMail";
 
@@ -137,9 +138,7 @@ export const SchedulerPage = () => {
   const location = useLocation();
   // 🧪 Mode mock pour accéder directement à /schedule
   const useMock = process.env.REACT_APP_USE_MOCK === "true";
-  const locationState = useMock
-      ? { customerSessionData: mockCustomerSessionData }
-      :  location.state as { customerSessionData: {
+  const locationState = location.state as { customerSessionData: {
     customerId: string;
     jobId: string;  
     ffaSession: string;
@@ -222,8 +221,7 @@ export const SchedulerPage = () => {
         setProgressMessage("Recherche d'autres créneaux en cours...");
         setOtherSlotsFirstScreenLoading(true);
 
-        setCustomerSlots(prev => [...prev, ...mockRemainingSlots]);
-        setRemainingCustomerSlots(mockRemainingSlots);
+
         setAllSlotsLoaded(true);
         setOtherDatesFirstScreenCustomerSlotsLoaded(true);
         setRemainingCustomerSlotsLoaded(true);
@@ -294,56 +292,6 @@ export const SchedulerPage = () => {
     }
   });
 
-  // Si on est en mode mock, on injecte les données directement sans fetch
-  useEffectOnce(() => {
-    if (useMock) {
-      const { defaultCustomerSlot } = mockCustomerSessionData;
-
-      if (defaultCustomerSlot) {
-        setDefaultSlot({
-          ...defaultCustomerSlot,
-          travelTimeChange: 0,
-          waitingTime: 0,
-          newTourStarted: false,
-          respectProperty: true,
-          respectSector: true,
-          respectPreferedWorker: false,
-          bestSlot: true,
-          maxDeviationTime: 0,
-          color: "#00AEEF"
-        });
-        setSelectedSlot({
-          ...defaultCustomerSlot,
-          travelTimeChange: 0,
-          waitingTime: 0,
-          newTourStarted: false,
-          respectProperty: true,
-          respectSector: true,
-          respectPreferedWorker: false,
-          bestSlot: true,
-          maxDeviationTime: 0,
-          color: "#00AEEF"
-        });
-        setCustomerSlots([
-          {
-            ...defaultCustomerSlot,
-            travelTimeChange: 0,
-            waitingTime: 0,
-            newTourStarted: false,
-            respectProperty: true,
-            respectSector: true,
-            respectPreferedWorker: false,
-            bestSlot: true,
-            maxDeviationTime: 0,
-            color: "#00AEEF"
-          },
-          ...(remainingSlots || [])
-        ]);
-      }
-
-      setIsLoading(false);
-    }
-  });
 
   useEffect(() => {
     if (
@@ -363,7 +311,33 @@ export const SchedulerPage = () => {
       return;
     }
 
-    (async function getData() {
+        if (useMock) {
+          setProgressMessage("Simulation de recherche de créneaux en cours...");
+          setTimeout(() => {
+            setCustomerSlots(prev => [...prev, ...mockRemainingSlots.map(slot => ({
+              ...slot,
+              travelTimeChange: 0,
+              waitingTime: 0,
+              newTourStarted: false,
+              respectProperty: true,
+              respectSector: true,
+              respectPreferedWorker: false,
+              bestSlot: false,
+              maxDeviationTime: 0,
+              color: "#FFA500"
+            }))]);
+
+            setOtherSlotsFirstScreenLoading(false);
+            setOtherDatesFirstScreenCustomerSlotsLoaded(true);
+            setFirstScreenFullFetched(true);
+            setRemainingCustomerSlotsLoaded(true);
+            setAllSlotsLoaded(true);
+          }, 800);
+          return;
+        }
+
+
+        (async function getData() {
       setProgressMessage('Recherche d\'autres créneaux en cours...');
       setOtherSlotsFirstScreenLoading(true);
 
@@ -507,7 +481,8 @@ export const SchedulerPage = () => {
     firstScreenFullFetched,
     otherSlotsFirstScreenLoading,
     allSlotsLoaded,
-    otherSlotsFirstScreenSlotsLoaded
+    otherSlotsFirstScreenSlotsLoaded,
+    useMock
   ]);
 
   function openModal() {
